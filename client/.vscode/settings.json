@@ -1,0 +1,25 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2, 
+  "editor.insertSpaces": false, 
+  "editor.detectIndentation": false, 
+  "editor.defaultFormatter": "esbenp.prettier-vscode", 
+  "prettier.tabWidth": 2, 
+  "prettier.useTabs": false,
+
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  }
+}
