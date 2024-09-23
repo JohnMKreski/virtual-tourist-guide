@@ -9,7 +9,12 @@ import { ComponentLibraryModule } from '@arcgis/map-components-angular';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ActivitiesListComponent, MatToolbarModule, NavBarComponent, MapComponent, ComponentLibraryModule],
+  imports: [
+    RouterOutlet, 
+    ActivitiesListComponent, 
+    MatToolbarModule, 
+    NavBarComponent, 
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -30,7 +30,6 @@
     "express": "^4.18.2",
     "mapbox-gl": "^2.15.0",
     "ngx-mapbox-gl": "^11.0.1",
-    "resize-observer-polyfill": "^1.5.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
