@@ -3,8 +3,6 @@ import { ActivitiesListComponent } from './activities/activities-list/activities
 import { AddActivityComponent } from './activities/add-activity/add-activity.component';
 import { EditActivityComponent } from './activities/edit-activity/edit-activity.component';
 import { HomeComponent } from './home/home.component';
-import { MapComponent } from './map/map.component';
-import { MapPageComponent } from './map-page/map-page.component';
 import { ArcMapPageComponent } from './arc-map-page/arc-map-page.component';
 
 export const routes: Routes = [
@@ -16,10 +14,6 @@ export const routes: Routes = [
   { 
     path: 'home', 
     component: HomeComponent, 
-  },
-  { 
-    path: 'map-page', 
-    component: MapPageComponent, 
   },
   { 
     path: 'arc-map-page', 

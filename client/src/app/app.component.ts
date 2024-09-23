@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { ActivitiesListComponent } from './activities/activities-list/activities-list.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
-import { MapComponent } from './map/map.component';
 import { ComponentLibraryModule } from '@arcgis/map-components-angular';
 
 @Component({
