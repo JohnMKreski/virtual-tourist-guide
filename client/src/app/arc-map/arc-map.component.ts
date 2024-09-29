@@ -28,7 +28,7 @@ export class ArcMapComponent implements OnInit, OnDestroy {
   title = "map-components-angular-template";
 
   constructor() {
-    // Log when the constructor is invoked
+    // Log when the constructor is invoked 
     console.log("ArcMapComponent constructor called");  
   }
 
