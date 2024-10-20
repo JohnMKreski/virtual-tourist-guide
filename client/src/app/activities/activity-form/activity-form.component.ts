@@ -40,28 +40,45 @@ import { Activity } from '../activity-interface';
       <mat-form-field appearance="fill">
         <mat-label>Activity Name</mat-label>
         <input matInput placeholder="Enter Activity Name" formControlName="activityName" required />
-        @if (activityName.invalid) {
+        @if (activityName?.invalid) {
         <mat-error>Name must be at least 3 characters long.</mat-error>
         }
       </mat-form-field>
 
-      <div formGroupName="location">
+      <mat-form-field appearance="fill">
+        <mat-label>Activity Type</mat-label>
+        <input matInput placeholder="Activity Type" formControlName="activityType" required />
+        @if (activityType?.invalid) {
+        <mat-error>Type must be at least 3 characters long.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Surface Type</mat-label>
+        <input matInput placeholder="Surface Type" formControlName="surfaceType" required />
+        @if (surfaceType?.invalid) {
+        <mat-error>Type must be at least 3 characters long.</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- <div formGroupName="location">
         <mat-form-field appearance="fill">
           <mat-label>Latitude</mat-label>
           <input matInput placeholder="Enter latitude" formControlName="lat" required>
-          @if (latitude.invalid) {
+          @if (latitude?.invalid) {
           <mat-error>Latitude is required.</mat-error>
           }
         </mat-form-field>
         
+        
         <mat-form-field appearance="fill">
           <mat-label>Longitude</mat-label>
           <input matInput placeholder="Enter longitude" formControlName="lng" required>
-          @if (longitude.invalid) {
+          @if (longitude?.invalid) {
           <mat-error>Longitude is required.</mat-error>
           }
         </mat-form-field>
-      </div>
+      </div> -->
 
       <mat-radio-group formControlName="difficultyLevel" aria-label="Select an option">
         <mat-radio-button name="difficultyLevel" value="Beginner" required 
@@ -79,7 +96,7 @@ import { Activity } from '../activity-interface';
         mat-raised-button
         color="primary"
         type="submit"
-        [disabled]="activityForm.invalid"
+        [disabled]="activityForm?.invalid"
       >
         Add
       </button>
@@ -96,10 +113,12 @@ export class ActivityFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
     this.activityForm = this.formBuilder.group({
       activityName: ['', [Validators.required, Validators.minLength(3)]],
-      location: this.formBuilder.group({
-        lat: ['', [Validators.required, Validators.pattern(/^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/)]],
-        lng: ['', [Validators.required, Validators.pattern(/^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/)]],
-      }),
+      activityType: ['', [Validators.required]],
+      surfaceType: ['', [Validators.required]],
+      // location: this.formBuilder.group({
+      //   lat: ['', [Validators.required, Validators.pattern(/^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/)]],
+      //   lng: ['', [Validators.required, Validators.pattern(/^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/)]],
+      // }),
       difficultyLevel: ['Beginner', [Validators.required]]
     });
   }
@@ -114,17 +133,26 @@ export class ActivityFormComponent implements OnInit {
     return this.activityForm.get('activityName');
   }
 
-  get location() {
-    return this.activityForm.get('location');
+  get activityType() {
+    return this.activityForm.get('activityType');
   }
 
-  get latitude() {
-    return this.activityForm.get('location.lat');
+  get surfaceType() {
+    return this.activityForm.get('surfaceType');
   }
 
-  get longitude() {
-    return this.activityForm.get('location.lng');
-  }
+  // get location() {
+  //   return this.activityForm.get('location');
+  // }
+
+
+  // get latitude() {
+  //   return this.activityForm.get('location.lat');
+  // }
+
+  // get longitude() {
+  //   return this.activityForm.get('location.lng');
+  // }
 
   get difficultyLevel() {
     return this.activityForm.get('difficultyLevel');
