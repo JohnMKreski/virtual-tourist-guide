@@ -23,7 +23,7 @@ async function applySchemaValidation(db: mongodb.Db) {
     const jsonSchema = {
         $jsonSchema: {
             bsonType: "object",
-            required: ["activityName", "location", "difficultyLevel"],
+            required: ["activityName", "activityType", "difficultyLevel"],
             additionalProperties: false,
             properties: {
                 _id: {
@@ -31,25 +31,16 @@ async function applySchemaValidation(db: mongodb.Db) {
                     description: "'_id' is a objectId that uniquely identifies the document",
                 },
                 activityName: {
-                    bsonType: "object",
+                    bsonType: "string",
                     description: "'activityName' is required and is a string",
                 },
-                location: {
+                activityType: {
                     bsonType: "string",
-                    description: "'location' is required and must be an object with latitude and longitude",
-                    required: ["lat", "lng"],
-                    properties: {
-                        //MongoDB uses the double type for floating-point numbers, 
-                        //which is suitable for latitude and longitude values.
-                        lat: {
-                            bsonType: "double",
-                            description: "'lat' is the latitude and must be a double",
-                        },
-                        lng: {
-                            bsonType: "double",
-                            description: "'lng' is the longitude and must be a double",
-                        },
-                    },
+                    description: "'type' is required and is a string",
+                },
+                surfaceType: {
+                    bsonType: "string",
+                    description: "'type' is required and is a string",
                 },
                 difficultyLevel: {
                     bsonType: "string",
@@ -60,14 +51,36 @@ async function applySchemaValidation(db: mongodb.Db) {
         },
     };
 
+    
+
 
     // Try applying the modification to the collection, if the collection doesn't exist, create it 
    await db.command({
         collMod: "activities",
         validator: jsonSchema
     }).catch(async (error: mongodb.MongoServerError) => {
+        console.error("Error applying schema validation:", error.message);
         if (error.codeName === "NamespaceNotFound") {
             await db.createCollection("activities", {validator: jsonSchema});
         }
     });
 }
+
+
+// location: {
+                //     bsonType: "object",
+                //     description: "'location' is required and must be an object with latitude and longitude",
+                //     required: ["lat", "lng"],
+                //     properties: {
+                //         //MongoDB uses the double type for floating-point numbers, 
+                //         //which is suitable for latitude and longitude values.
+                //         lat: {
+                //             bsonType: "string",
+                //             description: "'lat' is the latitude and must be a double",
+                //         },
+                //         lng: {
+                //             bsonType: "string",
+                //             description: "'lng' is the longitude and must be a double",
+                //         },
+                //     },
+                // },

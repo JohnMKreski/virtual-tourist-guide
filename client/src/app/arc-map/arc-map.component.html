@@ -1,10 +1,17 @@
 <div id="viewDiv">
-  <!-- //item-id="d5dda743788a4b0688fe48f43ae7beb9" -->
-  <arcgis-map item-id="604562cb499d4e1984b1aed11d961bec" (arcgisViewReadyChange)="arcgisViewReadyChange($event)">
+  <!-- //item-id="604562cb499d4e1984b1aed11d961bec" -->
+
+  <!-- <calcite-shell>
+    <calcite-navigation slot="header">
+      <calcite-navigation-logo slot="logo"></calcite-navigation-logo>
+    </calcite-navigation>
+  </calcite-shell> -->
+  <arcgis-map item-id="ab2f8148192645f6850b649fde1ae668" (arcgisViewReadyChange)="arcgisViewReadyChange($event)">
     <arcgis-expand>
       <arcgis-search position="top-right"></arcgis-search>
     </arcgis-expand>
     <arcgis-legend position="bottom-left"></arcgis-legend>
+    <arcgis-layer-list position="top-left"></arcgis-layer-list>
   </arcgis-map>
   
   </div>

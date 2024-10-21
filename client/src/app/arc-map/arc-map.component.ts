@@ -8,6 +8,9 @@ import "@arcgis/map-components/dist/components/arcgis-legend";
 import { defineCustomElements } from "@arcgis/map-components/dist/loader";
 import { ComponentLibraryModule } from '@arcgis/map-components-angular';
 import  esriConfig from "@arcgis/core/config";
+import ElevationProfile from "@arcgis/core/widgets/ElevationProfile.js";
+import SceneView from '@arcgis/core/views/SceneView';
+
 
 import WebMap from '@arcgis/core/WebMap';
 import MapView from '@arcgis/core/views/MapView';
@@ -27,6 +30,7 @@ export class ArcMapComponent implements OnInit, OnDestroy {
 
   title = "map-components-angular-template";
 
+
   constructor() {
     // Log when the constructor is invoked 
     console.log("ArcMapComponent constructor called");  
@@ -38,12 +42,33 @@ export class ArcMapComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log("ngOnInit called: Component initialization starts");
     defineCustomElements(window, { resourcesUrl: "https://js.arcgis.com/map-components/4.30/assets" });
     
     // Log when ngOnInit lifecycle hook is called
     console.log("ngOnInit called: component initialization");
 
-    esriConfig.apiKey = environment.arcgisApiKey;
+
+    // esriConfig.apiKey = environment.arcgisApiKey;
+    // console.log("API Key set:", esriConfig.apiKey);
+
+    // const webmap = new WebMap({
+    //   portalItem: {
+    //     id: '604562cb499d4e1984b1aed11d961bec'
+    //   }
+    // });
+
+    // const view = new MapView({
+    //   map: webmap,
+    //   container: 'viewDiv'
+    // });
+
+    // console.log("Map and View setup initiated");
+    // view.when(() => {
+    //   console.log('Map and view are ready');
+    // }, error => {
+    //   console.error('An error occurred:', error);
+    // });
     
   }
 

@@ -18,7 +18,8 @@ export class ActivitiesListComponent implements OnInit {
   activities$ = {} as WritableSignal<Activity[]>;
   displayedColumns: string[] = [
     'col-activityName',
-    'col-location',
+    'col-activityType',
+    'col-surfaceType',
     'col-difficultyLevel',
     'col-action',
   ];
